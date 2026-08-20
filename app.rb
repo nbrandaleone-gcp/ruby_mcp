@@ -2,9 +2,11 @@
 
 require 'bundler/setup'
 Bundler.require 
-
 # there is no need to manually require the dependencies
 # anymore, as we just called Bundler.require
+
+logger = Logger.new(STDERR)
+logger.level = Logger::DEBUG 
 
 class EchoTool < MCP::Tool
   description "A simple example tool that echoes back its arguments"
@@ -41,9 +43,6 @@ mcp_transport = MCP::Server::Transports::StreamableHTTPTransport.new(
 # defaults (127.0.0.1, ::1, localhost), and an Origin header, when present, must be 
 # same-origin or explicitly allow-listed. Non-browser clients that send no Origin header 
 # are unaffected.
-
-logger = Logger.new(STDERR)
-logger.level = Logger::DEBUG 
 
 # Build the Rack application with middleware.
 # `StreamableHTTPTransport` responds to `call(env)`, so it can be used directly as a Rack app.
