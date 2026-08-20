@@ -1,0 +1,5 @@
+# dockerignore
+bin/
+
+# Ignore the dockerignore file itself
+.dockerignore

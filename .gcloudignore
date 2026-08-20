@@ -1,0 +1,18 @@
+# Exclude node modules and python virtual environments
+node_modules/
+.venv/
+__pycache__/
+
+# Exclude local environmental secrets and keys
+.env
+*.json
+secrets/
+
+# Exclude IDE folders and system files
+.idea/
+.vscode/
+.DS_Store
+
+# Exclude tests and documentation
+tests/
+*.md
