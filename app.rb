@@ -51,7 +51,7 @@ rack_app = Rack::Builder.new do
   use(Rack::CommonLogger, logger)
 
   map "/ok" do
-    run ->(_env) { [200, {"content-type" => "text/plain"}, ["ok"]] }
+    run ->(_env) { [200, {"content-type" => "text/plain"}, ["ok\r\n"]] }
   end
 
   map "/debug" do 
@@ -62,7 +62,7 @@ rack_app = Rack::Builder.new do
         puts "#{key}: #{value}"
       end
 
-      [200, { 'Conent-Type' => 'text/plain' }, ['Headers printed to console!\n']]
+      [200, { 'Conent-Type' => 'text/plain' }, ['Headers printed to console!']]
     end
     run app
   end
