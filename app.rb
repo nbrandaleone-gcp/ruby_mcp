@@ -51,19 +51,6 @@ rack_app = Rack::Builder.new do
   use(Rack::ShowExceptions)
   use(Rack::CommonLogger, logger)
 
-  # Enable CORS to allow browser-based MCP clients (e.g., MCP Inspector)
-  # WARNING: origins("*") allows all origins. Restrict this in production.
-  use(Rack::Cors) do
-    allow do
-      origins("*")
-      resource(
-        "*",
-        headers: :any,
-        methods: [:get, :post, :delete, :options]
-      )
-    end
-  end
-
   map "/ok" do
     run ->(_env) { [200, {"content-type" => "text/plain"}, ["ok"]] }
   end
