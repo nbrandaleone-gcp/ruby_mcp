@@ -28,6 +28,28 @@ task :run do
   sh "bundle exec ruby app.rb"
 end
 
+namespace :test do
+  desc "HTTP Get to endpoint"
+  task :get do
+    sh "curl https://ruby-mcp-server-161156519703.us-central1.run.app/ok"
+  end
+
+  desc "Trigger DEBUG. Print out ENV to logging"
+  task :debug do 
+    sh "curl https://ruby-mcp-server-161156519703.us-central1.run.app/debug"
+  end
+
+  desc "List tools available on MCP server"
+  task :list do
+    sh "npx @modelcontextprotocol/inspector --cli https://ruby-mcp-server-161156519703.us-central1.run.app --transport http --method tools/list"
+  end
+
+  desc "Call MCP tool"
+  task :call do
+    sh "npx @modelcontextprotocol/inspector --cli https://ruby-mcp-server-161156519703.us-central1.run.app --transport http --method tools/call --tool-name echo_tool --tool-arg 'message=\"Hello MCP server!\"'"
+  end
+end
+
 #############################################
 
 # 3. Tasks with Dependencies (Prerequisites)
