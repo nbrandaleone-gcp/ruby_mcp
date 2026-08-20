@@ -62,7 +62,7 @@ rack_app = Rack::Builder.new do
         puts "#{key}: #{value}"
       end
 
-      [200, { 'Conent-Type' => 'text/plain' }, ['Headers printed to console!']]
+      [200, { 'Conent-Type' => 'text/plain' }, ['Headers printed to console!\n']]
     end
     run app
   end
